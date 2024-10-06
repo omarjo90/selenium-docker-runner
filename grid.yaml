@@ -1,0 +1,22 @@
+version: "3"
+services:
+  hub:
+    image: selenium/hub:latest
+  chrome:
+    image: selenium/node-chrome:latest
+    shm_size: '2g'
+    depends_on:
+      - hub
+    deploy:
+      replicas: 1
+    env_file:
+      - .env
+  edge:
+    image: selenium/node-edge:latest
+    shm_size: '2g'
+    depends_on:
+      - hub
+    deploy:
+      replicas: 1
+    env_file:
+      - .env
