@@ -2,15 +2,11 @@ version: "3"
 services:
   hub:
     image: selenium/hub:latest
-#    ports:
-#      - 4444:4444
   chrome:
     image: selenium/node-chrome:latest
     shm_size: '2g'
     depends_on:
       - hub
-#    deploy:
-#      replicas: 2
     environment:
       - SE_EVENT_BUS_HOST=hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
@@ -23,8 +19,6 @@ services:
     shm_size: '2g'
     depends_on:
       - hub
-#    deploy:
-#      replicas: 2
     environment:
       - SE_EVENT_BUS_HOST=hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
@@ -43,7 +37,6 @@ services:
       - TEST_SUITE=vendor-portal.xml
     volumes:
       - ./output/vendor-portal:/home/selenium-docker/test-output
-#      - ./test-data/mike.json:/home/selenium-docker/test-data/vendor-portal/mike.json
   flight-reservation:
     image: omarjo/selenium
     depends_on:
