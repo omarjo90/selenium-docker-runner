@@ -1,7 +1,7 @@
 pipeline{
     agent any
     parameters{
-        choice choises: ['chrome', 'edge'], description: 'Select the browser to run the tests', name: 'BROWSER'
+        choice choices: ['chrome', 'edge'], description: 'Select the browser to run the tests', name: 'BROWSER'
     }
     stages{
         stage('Start Grid'){
